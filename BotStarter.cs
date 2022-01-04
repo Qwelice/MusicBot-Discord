@@ -21,9 +21,10 @@
                 .SetupAndGetServices();
             CommandsNextExtension commands = new CommandsInstaller()
                 .SetupAndGetCommands(client, services);
-            new HandlingInstaller()
+            new HandlersInstaller()
                 .HandleCommands(commands);
-
+            new ExtensionInstaller()
+                .SetupExtensions(client);
 
             await client.ConnectAsync();
             await Task.Delay(-1);
