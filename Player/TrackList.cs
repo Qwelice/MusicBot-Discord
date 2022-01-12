@@ -28,7 +28,7 @@
             tracks.Add(track);
             if (Position == -1)
             {
-                Position = Length - 1;
+                Position = 0;
             }
         }
 
@@ -37,7 +37,7 @@
             tracks.AddRange(trs);
             if(Position == -1)
             {
-                Position = Length - 1;
+                Position = 0;
             }
         }
 
