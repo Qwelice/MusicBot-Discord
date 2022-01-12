@@ -1,6 +1,6 @@
 .vs/
 obj/
-DiscordMusicBot.csproj
+
 bin/
 jdk-16.0.1/
 launchServer.bat
