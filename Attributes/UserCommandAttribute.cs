@@ -1,6 +1,6 @@
 ﻿namespace DiscordMusicBot.Attributes
 {
-    using DiscordMusicBot.Enums;
+    using DiscordMusicBot.Commands.User.Enums;
 
     public class UserCommandAttribute : Attribute
     {

@@ -11,7 +11,7 @@
         {
             DiscordClient client = new DiscordClient(new DiscordConfiguration()
             {
-                Token = "",
+                Token = "ODkzNjE5MTY1NjgyODkyODUy.YVeFsw.MOZ-iOjJ8jHYgnjoKZi_RA6LA2M",
                 TokenType = TokenType.Bot,
                 Intents = DiscordIntents.AllUnprivileged,
                 AutoReconnect = true
@@ -23,7 +23,7 @@
                 .SetupAndGetCommands(client, services);
             new HandlersInstaller()
                 .HandleCommands(commands);
-            new ExtensionInstaller()
+            new ExtensionsInstaller()
                 .SetupExtensions(client);
 
             await client.ConnectAsync();

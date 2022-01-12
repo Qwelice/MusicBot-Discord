@@ -1,4 +1,4 @@
-﻿namespace DiscordMusicBot.Enums
+﻿namespace DiscordMusicBot.Commands.User.Enums
 {
     public enum CommandType
     {
@@ -9,6 +9,7 @@
         Next = 50,
         Back = 60,
         Join = 70,
-        Leave = 80
+        Leave = 80,
+        Help = 90
     }
 }

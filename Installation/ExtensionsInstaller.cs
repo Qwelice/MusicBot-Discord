@@ -3,7 +3,7 @@
     using DiscordMusicBot.Extensions.Interfaces;
     using DSharpPlus;
 
-    public class ExtensionInstaller : Installer
+    public class ExtensionsInstaller : Installer
     {
         public void SetupExtensions(DiscordClient client)
         {

@@ -15,21 +15,22 @@
                 Hostname = "127.0.0.1",
                 Port = 2333
             };
-            var config = new LavalinkConfiguration
-            {
-                Password = "youshallnotpass",
-                RestEndpoint = endpoint,
-                SocketEndpoint = endpoint
-            };
             var lava = client.UseLavalink();
-            client.SocketOpened += async (s, e) => await ConnectLavalink(lava, config);
+            client.SocketOpened += async (s, e) => await ConnectLavalink(lava, endpoint);
 
             return Task.CompletedTask;
         }
 
-        private async Task ConnectLavalink(LavalinkExtension lava, LavalinkConfiguration cfg)
+        private async Task ConnectLavalink(LavalinkExtension lava, ConnectionEndpoint endp)
         {
-            await lava.ConnectAsync(cfg);
+            var config = new LavalinkConfiguration
+            {
+                Password = "youshallnotpass",
+                RestEndpoint = endp,
+                SocketEndpoint = endp
+            };
+
+            await lava.ConnectAsync(config); // сервер по-любому должен быть запущен, иначе бот вообще будет недоступен!! 
         }
     }
 }
