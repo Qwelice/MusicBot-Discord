@@ -4,29 +4,40 @@
     using DSharpPlus.Lavalink;
     using System;
     using System.Threading.Tasks;
+    using System.Linq;
+    using System.Collections.Generic;
 
     public class MusicSearchService : IMusicSearchService
     {
-        public async Task<LavalinkLoadResult?> GetQueryResult(LavalinkGuildConnection conn, string query)
+        public async Task<IList<LavalinkTrack>?> GetQueryResult(LavalinkGuildConnection conn, string query)
         {
             var isUri = Uri.IsWellFormedUriString(query, UriKind.Absolute);
-            LavalinkLoadResult loadResult;
+            IList<LavalinkTrack> loadResult;
             if (isUri)
             {
                 var uri = new Uri(query);
-                loadResult = await conn.GetTracksAsync(uri);
+                var lResult = await conn.GetTracksAsync(uri);
+
+                if (lResult.LoadResultType == LavalinkLoadResultType.LoadFailed
+                || lResult.LoadResultType == LavalinkLoadResultType.NoMatches)
+                {
+                    return null;
+                }
+
+                loadResult = lResult.Tracks.ToList();
             }
             else
             {
-                loadResult = await conn.GetTracksAsync(query);
-            }
+                var lResult = await conn.GetTracksAsync(query);
 
-            if (loadResult.LoadResultType == LavalinkLoadResultType.LoadFailed
-                || loadResult.LoadResultType == LavalinkLoadResultType.NoMatches)
-            {
-                return null;
-            }
+                if (lResult.LoadResultType == LavalinkLoadResultType.LoadFailed
+                || lResult.LoadResultType == LavalinkLoadResultType.NoMatches)
+                {
+                    return null;
+                }
 
+                loadResult = lResult.Tracks.Take(1).ToList();
+            }
             return loadResult;
         }
     }

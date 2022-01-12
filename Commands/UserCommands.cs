@@ -1,4 +1,4 @@
-﻿namespace DiscordMusicBot.Commands.User
+﻿namespace DiscordMusicBot.Commands
 {
     using DiscordMusicBot.Attributes;
     using DiscordMusicBot.Commands.User.Enums;
@@ -35,8 +35,12 @@
         [UserCommand(CommandType.Back)]
         public async Task BackCommand(CommandContext ctx) { }
 
-        [Command("help"), Aliases("h")]
-        [UserCommand(CommandType.Help)]
-        public async Task HelpCommand(CommandContext ctx) { }
+        //[Command("help"), Aliases("h")]
+        //[UserCommand(CommandType.Help)]
+        //public async Task HelpCommand(CommandContext ctx) { }
+
+        //[Command("uct4as")]
+        //[UserCommand(CommandType.None)]
+        //public async Task NoneCommand(CommandContext ctx) { }
     }
 }

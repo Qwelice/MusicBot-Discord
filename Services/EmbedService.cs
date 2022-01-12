@@ -6,20 +6,25 @@
     using DSharpPlus.Entities;
     using DSharpPlus.Lavalink;
     using System;
+    using System.Text;
 
     public class EmbedService : IEmbedService
     {
-        public DiscordEmbed CreateAddedInQueueEmbed(CommandContext ctx, LavalinkTrack track)
+        public DiscordEmbed CreateAddedInQueueEmbed(CommandContext ctx, IList<LavalinkTrack> tracks)
         {
-            var embed = new DiscordEmbedBuilder()
+            var emb = new DiscordEmbedBuilder()
                 .WithColor(DiscordColor.Green)
-                .WithAuthor(track.Author)
                 .WithTitle("Добавлено в очередь")
-                .WithDescription(track.Title)
                 .WithFooter($"Автор запроса {ctx.Member.DisplayName}", ctx.Member.AvatarUrl)
-                .WithTimestamp(DateTime.UtcNow)
-                .Build();
-            return embed;
+                .WithTimestamp(DateTime.UtcNow);
+
+            var sb = new StringBuilder();
+            foreach (var track in tracks)
+            {
+                sb.Append(track.Title).Append("  -  ").Append(track.Author).Append("\n");
+            }
+            emb.WithDescription(sb.ToString());
+            return emb.Build();
         }
 
         public DiscordEmbed CreateEmbed(EmbedType type)

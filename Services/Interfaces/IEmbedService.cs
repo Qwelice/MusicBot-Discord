@@ -9,7 +9,7 @@
     {
         public DiscordEmbed CreateEmbed(EmbedType type);
         public DiscordEmbed CreateNowPlayingEmbed(LavalinkTrack track);
-        public DiscordEmbed CreateAddedInQueueEmbed(CommandContext ctx, LavalinkTrack track);
+        public DiscordEmbed CreateAddedInQueueEmbed(CommandContext ctx, IList<LavalinkTrack> tracks);
         public DiscordEmbed CreateNoQueryResultEmbed(string query);
     }
 }

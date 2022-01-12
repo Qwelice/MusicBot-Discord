@@ -3,6 +3,6 @@
     using DSharpPlus.Lavalink;
     public interface IMusicSearchService
     {
-        public Task<LavalinkLoadResult?> GetQueryResult(LavalinkGuildConnection conn, string query);
+        public Task<IList<LavalinkTrack>?> GetQueryResult(LavalinkGuildConnection conn, string query);
     }
 }
