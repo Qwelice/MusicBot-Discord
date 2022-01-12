@@ -56,7 +56,11 @@
                 if (conn == null)
                 {
                     conn = await connService.ConnectToVoice(payload.Context, _services);
-                    HandleConnectionEvents(payload.Context, conn!);
+                    if(conn == null)
+                    {
+                        return;
+                    }
+                    HandleConnectionEvents(payload.Context, conn);
                 }
                 if (payload.Type == PayloadType.Query)
                 {

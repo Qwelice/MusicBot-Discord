@@ -1,5 +1,6 @@
 ﻿namespace DiscordMusicBot.Installation
 {
+    using DiscordMusicBot.Commands;
     using DSharpPlus;
     using DSharpPlus.CommandsNext;
     using System;
@@ -31,6 +32,7 @@
                 StringPrefixes = _prefixes,
                 Services = services
             });
+            commands.SetHelpFormatter<BotHelpFormatter>();
         }
 
         private void RegisterCommands(CommandsNextExtension commands)
