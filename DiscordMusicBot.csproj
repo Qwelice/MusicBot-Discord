@@ -8,8 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="configs\**" />
     <Compile Remove="jdk-16.0.1\**" />
+    <EmbeddedResource Remove="configs\**" />
     <EmbeddedResource Remove="jdk-16.0.1\**" />
+    <None Remove="configs\**" />
     <None Remove="jdk-16.0.1\**" />
   </ItemGroup>
 
@@ -24,10 +27,9 @@
     <PackageReference Include="DSharpPlus.CommandsNext" Version="4.1.0" />
     <PackageReference Include="DSharpPlus.Interactivity" Version="4.1.0" />
     <PackageReference Include="DSharpPlus.Lavalink" Version="4.1.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Commands\Admin\" />
+    <PackageReference Include="FluentNHibernate" Version="3.1.0" />
+    <PackageReference Include="NHibernate" Version="5.3.10" />
+    <PackageReference Include="Npgsql" Version="6.0.2" />
   </ItemGroup>
 
 </Project>

@@ -1,5 +1,8 @@
 ﻿namespace DiscordMusicBot
 {
+    using DiscordMusicBot.Configurations;
+    using DiscordMusicBot.Configurations.Models;
+    using DiscordMusicBot.DB.Init;
     using DiscordMusicBot.Installation;
     using DSharpPlus;
     using DSharpPlus.CommandsNext;
@@ -9,9 +12,10 @@
     {
         public static async Task Start()
         {
+            BotConfiguration botCfg = Configurator.GetConfiguration<BotConfiguration>();
             DiscordClient client = new DiscordClient(new DiscordConfiguration()
             {
-                Token = "ODkzNjE5MTY1NjgyODkyODUy.YVeFsw.MOZ-iOjJ8jHYgnjoKZi_RA6LA2M",
+                Token = botCfg.Token,
                 TokenType = TokenType.Bot,
                 Intents = DiscordIntents.AllUnprivileged,
                 AutoReconnect = true
@@ -27,6 +31,9 @@
                 .SetupExtensions(client);
 
             await client.ConnectAsync();
+
+            DefaultInitializer.Seed(false, client);
+
             await Task.Delay(-1);
         }
     }
